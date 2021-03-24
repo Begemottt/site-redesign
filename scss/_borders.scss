@@ -1,0 +1,14 @@
+// ~~~~~~~~~~ Mixin Delcarations ~~~~~~~~~~
+@mixin standard_border{
+    border: 8px solid $nearblack;
+    box-shadow: 4px 4px 0px $shadow;
+}
+@mixin image_border($image){
+    border: 24px solid transparent;
+    border-image: $image 24 stretch;
+}
+@mixin button_border{
+    border: 8px solid transparent;
+    border-image: url('../images/border_button.png') 8 round;
+}
+// ~~~~~~~~~~~~~~~~~~~~

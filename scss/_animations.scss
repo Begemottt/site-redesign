@@ -1,0 +1,14 @@
+// ~~~~~~~~~~ Mixin Delcarations ~~~~~~~~~~
+@mixin background_animation($image, $speed){
+    background-image: $image;
+    background-repeat: repeat;
+    animation: moving_background $speed linear infinite;
+}
+// ~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~ Animation Delcarations ~~~~~~~~~~
+@keyframes moving_background{
+    from{background-position: 0px 0px}
+    to{background-position: 24px 24px}
+}
+// ~~~~~~~~~~~~~~~~~~~~

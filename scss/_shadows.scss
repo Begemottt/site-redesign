@@ -1,0 +1,12 @@
+// Mixins file for shadows
+@mixin standard_shadow{
+    box-shadow: 4px 4px 0px $shadow;
+    transition: box-shadow 500ms;
+    &:hover, &:focus, &:focus-within{
+        box-shadow: 6px 6px 2px $shadow;
+        transition: box-shadow 200ms;
+    }
+}
+@mixin text_shadow{
+    text-shadow: 2px 2px 2px $shadow;
+}

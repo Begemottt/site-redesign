@@ -1,0 +1,66 @@
+// ~~~~~~~~~~Font Mixins~~~~~~~~~~
+@mixin font_body{  
+    font-family: 'Nanum Gothic Coding', serif;
+    // text-shadow: 2px 2px 2px 2px $cdark;
+}
+@mixin font_deco{  
+    font-family: 'DotGothic16', cursive;
+}
+@mixin font_sans{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 100;
+}
+@mixin font_code{  
+    font-family: 'Fira Mono', monospace;
+    // color: $teal;
+}
+
+// ~~~~~~~~~~Basic Designations~~~~~~~~~~
+
+h1{
+    font-size: 3em;
+    @include font_sans();
+    color: $black;
+}
+h2{
+    font-size: 2em;
+    @include font_sans();
+    color: $black;
+}
+p{
+    font-size: 1.5em;
+    @include font_body();
+    @include text_shadow;
+    color: $black;
+}
+strong{
+    text-shadow: 2px 2px 0px $red;
+}
+em{
+    text-shadow: 2px 2px 0px $green;
+}
+
+// ~~~~~~~~~~Link Styles~~~~~~~~~~
+
+a{
+    color: $red;
+    text-decoration-color: $red;
+    text-shadow: 0px 0px 0px $white;
+    transition: color 200ms, text-shadow 200ms;
+}
+a:hover, a:focus, a:focus-within{
+    color: $nearblack;
+    text-shadow: -2px -2px 0px $red;
+    transition: color 200ms, text-shadow 200ms;
+}
+
+// ~~~~~Nav Bar Styles~~~~~
+
+
+
+//~~~~~~~~~~Selection Style~~~~~~~~~~
+::selection{
+    background-color: $red;
+    color: $blue;
+    text-shadow: 2px 2px 0px $black;
+}

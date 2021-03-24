@@ -1,0 +1,17 @@
+// ~~~~~~~~~~Imports!~~~~~~~~~~
+@import "reset";
+@import "imagevars";
+@import "animations";
+@import "colors";
+@import "borders";
+@import "shadows";
+@import "typography";
+@import "layout";
+// ~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~Fallback Rules~~~~~~~~~~
+html{
+    color: $black;
+    background-color: $white;
+}
+// ~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,104 @@
+// ~~~~~~~~~~~~~~~~~~~~PAGE LAYOUT!!~~~~~~~~~~~~~~~~~~~~
+main{
+    display: flex;
+    flex-direction: column;
+    // background-color: $lpurple;
+    @include background_animation($green_tile, 10s);
+}
+// ~~~~~~~~~~ Page header ~~~~~~~~~~
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50vw;
+    width: 100vw;
+    margin: 0 auto 0 auto;
+    // Background Image
+    background-image: url('../images/header_keyboard.png');
+    background-position: center;
+    background-size: cover;
+    // @include standard_border;
+// ~~~~~~~~~~ Navigation menu ~~~~~~~~~~
+    nav{
+        display: flex;
+        flex-direction: column;
+        @include standard_border;
+
+        width: 300px;
+        a{
+            flex-grow: 1;
+            @include button_border;
+            height: 65px;
+            background-color: $white;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            p{
+                padding: 10px;
+            }
+            img{
+                display: block;
+            }
+
+            &:hover, &:focus, &:focus-within{
+                background-color: $lred;
+            }
+        }
+    }
+    h1#title{
+        background-color: $lpurple;
+        @include standard_border;
+    }
+}
+
+// ~~~~~~~~~~Article Elements~~~~~~~~~~
+
+article{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: 10px auto 10px auto;
+    padding: 0.5em;
+    @include image_border($green_border);
+    background-image: $dither_white;
+    position: relative;
+    &:nth-child(odd){
+        right: 2rem;
+    }
+    &:nth-child(even){
+        left: 2rem;
+    }
+
+    // ~~~~~~~~~~Section~~~~~~~~~~
+    section.header{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1em;
+        h2{
+            color: $white;
+            margin: 0, 0, 0.25em, 0.5em;
+        }
+        p.byline{
+            color: $white;
+            font-size: 0.75em;
+            @include font_code;
+            margin-left: 1em;
+            border: 1px solid $white;
+            padding: 2px;
+        }
+        @include background_animation($dark_tile, 5s);
+        border: 2px solid $black;
+        @include standard_shadow;
+    }
+    section.body{
+        margin: 1em 2em 1em 2em;
+        background-color: $white;
+        padding: 8px;
+        border: 2px solid $nearblack;
+        @include standard_shadow;
+    }
+}

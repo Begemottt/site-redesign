@@ -1,0 +1,248 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+  padding-inline-start: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@keyframes moving_background {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: 24px 24px;
+  }
+}
+h1 {
+  font-size: 3em;
+  font-family: "Gothic A1", sans-serif;
+  font-weight: 100;
+  color: #050403;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: "Gothic A1", sans-serif;
+  font-weight: 100;
+  color: #050403;
+}
+
+p {
+  font-size: 1.5em;
+  font-family: "Nanum Gothic Coding", serif;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  color: #050403;
+}
+
+strong {
+  text-shadow: 2px 2px 0px #a14d3f;
+}
+
+em {
+  text-shadow: 2px 2px 0px #7cc264;
+}
+
+a {
+  color: #a14d3f;
+  text-decoration-color: #a14d3f;
+  text-shadow: 0px 0px 0px #fefefe;
+  transition: color 200ms, text-shadow 200ms;
+}
+
+a:hover, a:focus, a:focus-within {
+  color: #221f31;
+  text-shadow: -2px -2px 0px #a14d3f;
+  transition: color 200ms, text-shadow 200ms;
+}
+
+::selection {
+  background-color: #a14d3f;
+  color: #678fcb;
+  text-shadow: 2px 2px 0px #050403;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../images/green_tile.png");
+  background-repeat: repeat;
+  animation: moving_background 10s linear infinite;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 50vw;
+  width: 100vw;
+  margin: 0 auto 0 auto;
+  background-image: url("../images/header_keyboard.png");
+  background-position: center;
+  background-size: cover;
+}
+header nav {
+  display: flex;
+  flex-direction: column;
+  border: 8px solid #221f31;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  width: 300px;
+}
+header nav a {
+  flex-grow: 1;
+  border: 8px solid transparent;
+  border-image: url("../images/border_button.png") 8 round;
+  height: 65px;
+  background-color: #fefefe;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+header nav a p {
+  padding: 10px;
+}
+header nav a img {
+  display: block;
+}
+header nav a:hover, header nav a:focus, header nav a:focus-within {
+  background-color: #ea9182;
+}
+header h1#title {
+  background-color: #9a93b7;
+  border: 8px solid #221f31;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 10px auto 10px auto;
+  padding: 0.5em;
+  border: 24px solid transparent;
+  border-image: url("../images/border_green.png") 24 stretch;
+  background-image: url("../images/dither_white.png");
+  position: relative;
+}
+article:nth-child(odd) {
+  right: 2rem;
+}
+article:nth-child(even) {
+  left: 2rem;
+}
+article section.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+  background-image: url("../images/dark_tile.png");
+  background-repeat: repeat;
+  animation: moving_background 5s linear infinite;
+  border: 2px solid #050403;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 500ms;
+}
+article section.header h2 {
+  color: #fefefe;
+  margin: 0, 0, 0.25em, 0.5em;
+}
+article section.header p.byline {
+  color: #fefefe;
+  font-size: 0.75em;
+  font-family: "Fira Mono", monospace;
+  margin-left: 1em;
+  border: 1px solid #fefefe;
+  padding: 2px;
+}
+article section.header:hover, article section.header:focus, article section.header:focus-within {
+  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 200ms;
+}
+article section.body {
+  margin: 1em 2em 1em 2em;
+  background-color: #fefefe;
+  padding: 8px;
+  border: 2px solid #221f31;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 500ms;
+}
+article section.body:hover, article section.body:focus, article section.body:focus-within {
+  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 200ms;
+}
+
+html {
+  color: #050403;
+  background-color: #fefefe;
+}
