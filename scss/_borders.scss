@@ -1,7 +1,12 @@
 // ~~~~~~~~~~ Mixin Delcarations ~~~~~~~~~~
 @mixin standard_border{
-    border: 8px solid $nearblack;
+    border: 2px solid $nearblack;
     box-shadow: 4px 4px 0px $shadow;
+    transition: box-shadow 300ms;
+    &:hover, &:focus, &:focus-within{
+        box-shadow: 8px 8px 4px $shadow;
+        transition: box-shadow 300ms;
+    }
 }
 @mixin image_border($image){
     border: 24px solid transparent;

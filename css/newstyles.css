@@ -83,10 +83,17 @@ select {
     background-position: 24px 24px;
   }
 }
+@keyframes moving_background_reverse {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: -24px -24px;
+  }
+}
 h1 {
   font-size: 3em;
-  font-family: "Gothic A1", sans-serif;
-  font-weight: 100;
+  font-family: "Fira Mono", monospace;
   color: #050403;
 }
 
@@ -134,7 +141,7 @@ a:hover, a:focus, a:focus-within {
 main {
   display: flex;
   flex-direction: column;
-  background-image: url("../images/green_tile.png");
+  background-image: url("../images/dark_tile.png");
   background-repeat: repeat;
   animation: moving_background 10s linear infinite;
 }
@@ -147,15 +154,16 @@ header {
   height: 50vw;
   width: 100vw;
   margin: 0 auto 0 auto;
-  background-image: url("../images/header_keyboard.png");
+  background-image: url("../images/header_gravy.png");
   background-position: center;
   background-size: cover;
 }
 header nav {
   display: flex;
   flex-direction: column;
-  border: 8px solid #221f31;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  background-image: url("../images/dither_black.png");
+  background-repeat: repeat;
+  animation: moving_background 5s linear infinite;
   width: 300px;
 }
 header nav a {
@@ -164,6 +172,7 @@ header nav a {
   border-image: url("../images/border_button.png") 8 round;
   height: 65px;
   background-color: #fefefe;
+  transition: background-color 200ms;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -176,12 +185,29 @@ header nav a img {
   display: block;
 }
 header nav a:hover, header nav a:focus, header nav a:focus-within {
-  background-color: #ea9182;
+  background-color: transparent;
+  transition: background-color 200ms;
+}
+header nav a:hover p, header nav a:focus p, header nav a:focus-within p {
+  color: #fefefe;
+  text-shadow: 4px 4px 0px #a14d3f;
 }
 header h1#title {
-  background-color: #9a93b7;
-  border: 8px solid #221f31;
+  background-image: url("../images/dither_black.png");
+  background-blend-mode: darken;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  color: #fefefe;
+  font-weight: bolder;
+  margin: 0.5em;
+  padding: 4px;
+  border: 2px solid #221f31;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 300ms;
+  width: 100%;
+}
+header h1#title:hover, header h1#title:focus, header h1#title:focus-within {
+  box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 300ms;
 }
 
 article {
@@ -191,7 +217,7 @@ article {
   margin: 10px auto 10px auto;
   padding: 0.5em;
   border: 24px solid transparent;
-  border-image: url("../images/border_green.png") 24 stretch;
+  border-image: url("../images/border_purple.png") 24 stretch;
   background-image: url("../images/dither_white.png");
   position: relative;
 }
@@ -208,10 +234,10 @@ article section.header {
   padding: 1em;
   background-image: url("../images/dark_tile.png");
   background-repeat: repeat;
-  animation: moving_background 5s linear infinite;
-  border: 2px solid #050403;
+  animation: moving_background_reverse 3s linear infinite;
+  border: 2px solid #221f31;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 500ms;
+  transition: box-shadow 300ms;
 }
 article section.header h2 {
   color: #fefefe;
@@ -222,12 +248,11 @@ article section.header p.byline {
   font-size: 0.75em;
   font-family: "Fira Mono", monospace;
   margin-left: 1em;
-  border: 1px solid #fefefe;
   padding: 2px;
 }
 article section.header:hover, article section.header:focus, article section.header:focus-within {
-  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 200ms;
+  box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 300ms;
 }
 article section.body {
   margin: 1em 2em 1em 2em;
@@ -235,11 +260,11 @@ article section.body {
   padding: 8px;
   border: 2px solid #221f31;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 500ms;
+  transition: box-shadow 300ms;
 }
 article section.body:hover, article section.body:focus, article section.body:focus-within {
-  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 200ms;
+  box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 300ms;
 }
 
 html {

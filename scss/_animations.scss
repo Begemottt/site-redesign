@@ -4,11 +4,20 @@
     background-repeat: repeat;
     animation: moving_background $speed linear infinite;
 }
+@mixin background_animation_reverse($image, $speed){
+    background-image: $image;
+    background-repeat: repeat;
+    animation: moving_background_reverse $speed linear infinite;
+}
 // ~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~ Animation Delcarations ~~~~~~~~~~
 @keyframes moving_background{
     from{background-position: 0px 0px}
     to{background-position: 24px 24px}
+}
+@keyframes moving_background_reverse{
+    from{background-position: 0px 0px}
+    to{background-position: -24px -24px}
 }
 // ~~~~~~~~~~~~~~~~~~~~

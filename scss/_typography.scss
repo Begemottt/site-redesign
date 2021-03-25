@@ -19,7 +19,7 @@
 
 h1{
     font-size: 3em;
-    @include font_sans();
+    @include font_code();
     color: $black;
 }
 h2{

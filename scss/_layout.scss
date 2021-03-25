@@ -2,8 +2,8 @@
 main{
     display: flex;
     flex-direction: column;
-    // background-color: $lpurple;
-    @include background_animation($green_tile, 10s);
+    // background-color: $nearblack;
+    @include background_animation($dark_tile, 10s);
 }
 // ~~~~~~~~~~ Page header ~~~~~~~~~~
 header{
@@ -15,7 +15,7 @@ header{
     width: 100vw;
     margin: 0 auto 0 auto;
     // Background Image
-    background-image: url('../images/header_keyboard.png');
+    background-image: url('../images/header_gravy.png');
     background-position: center;
     background-size: cover;
     // @include standard_border;
@@ -23,7 +23,7 @@ header{
     nav{
         display: flex;
         flex-direction: column;
-        @include standard_border;
+        @include background_animation($dither_black, 5s);
 
         width: 300px;
         a{
@@ -31,6 +31,7 @@ header{
             @include button_border;
             height: 65px;
             background-color: $white;
+            transition: background-color 200ms;
 
             display: flex;
             flex-direction: row;
@@ -44,13 +45,25 @@ header{
             }
 
             &:hover, &:focus, &:focus-within{
-                background-color: $lred;
+                background-color: transparent;
+                transition: background-color 200ms;
+                p{
+                    color: $white;
+                    text-shadow: 4px 4px 0px $red;
+                }
             }
         }
     }
     h1#title{
-        background-color: $lpurple;
+        background-image: url('../images/dither_black.png');
+        background-blend-mode: darken;
+        text-shadow: 4px 4px 0px $shadow;
+        color: $white;
+        font-weight: bolder;
+        margin: 0.5em;
+        padding: 4px;
         @include standard_border;
+        width: 100%;
     }
 }
 
@@ -62,7 +75,7 @@ article{
     width: 800px;
     margin: 10px auto 10px auto;
     padding: 0.5em;
-    @include image_border($green_border);
+    @include image_border($purple_border);
     background-image: $dither_white;
     position: relative;
     &:nth-child(odd){
@@ -87,18 +100,15 @@ article{
             font-size: 0.75em;
             @include font_code;
             margin-left: 1em;
-            border: 1px solid $white;
             padding: 2px;
         }
-        @include background_animation($dark_tile, 5s);
-        border: 2px solid $black;
-        @include standard_shadow;
+        @include background_animation_reverse($dark_tile, 3s);
+        @include standard_border;
     }
     section.body{
         margin: 1em 2em 1em 2em;
         background-color: $white;
         padding: 8px;
-        border: 2px solid $nearblack;
-        @include standard_shadow;
+        @include standard_border;
     }
 }
