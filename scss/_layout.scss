@@ -3,27 +3,32 @@ main{
     display: flex;
     flex-direction: column;
     // background-color: $nearblack;
+}
+html{
     @include background_animation($dark_tile, 10s);
 }
 // ~~~~~~~~~~ Page header ~~~~~~~~~~
 header{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 50vw;
-    width: 100vw;
-    margin: 0 auto 0 auto;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 45vw;
+    width: 90vw;
+    margin: 1em auto 1em auto;
     // Background Image
     background-image: url('../images/header_gravy.png');
     background-position: center;
     background-size: cover;
-    // @include standard_border;
+    @include standard_border;
 // ~~~~~~~~~~ Navigation menu ~~~~~~~~~~
     nav{
         display: flex;
         flex-direction: column;
         @include background_animation($dither_black, 5s);
+        position: absolute;
+        top: 0;
+        left: 0;
 
         width: 300px;
         a{
@@ -39,9 +44,13 @@ header{
             align-items: center;
             p{
                 padding: 10px;
+                color: $black;
+                transition: color 200ms;
             }
             img{
                 display: block;
+                background-color: $white;
+                transition: background-color 200ms;
             }
 
             &:hover, &:focus, &:focus-within{
@@ -49,7 +58,11 @@ header{
                 transition: background-color 200ms;
                 p{
                     color: $white;
-                    text-shadow: 4px 4px 0px $red;
+                    transition: color 200ms;
+                }
+                img{
+                    background-color: $red;
+                    transition: background-color 200ms;
                 }
             }
         }
@@ -62,7 +75,8 @@ header{
         font-weight: bolder;
         margin: 0.5em;
         padding: 4px;
-        @include standard_border;
+        // @include standard_border;
+        border: 1px solid $white;
         width: 100%;
     }
 }
@@ -76,7 +90,7 @@ article{
     margin: 10px auto 10px auto;
     padding: 0.5em;
     @include image_border($purple_border);
-    background-image: $dither_white;
+    background-image: $dither_black;
     position: relative;
     &:nth-child(odd){
         right: 2rem;
@@ -107,7 +121,7 @@ article{
     }
     section.body{
         margin: 1em 2em 1em 2em;
-        background-color: $white;
+        background-color: $black;
         padding: 8px;
         @include standard_border;
     }

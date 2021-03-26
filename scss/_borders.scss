@@ -1,10 +1,10 @@
 // ~~~~~~~~~~ Mixin Delcarations ~~~~~~~~~~
 @mixin standard_border{
-    border: 2px solid $nearblack;
-    box-shadow: 4px 4px 0px $shadow;
+    border: 2px solid $white;
+    box-shadow: 6px 6px 0px $white_shadow;
     transition: box-shadow 300ms;
     &:hover, &:focus, &:focus-within{
-        box-shadow: 8px 8px 4px $shadow;
+        box-shadow: 8px 8px 0px $white_shadow;
         transition: box-shadow 300ms;
     }
 }
