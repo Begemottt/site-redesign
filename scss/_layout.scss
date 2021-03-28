@@ -20,39 +20,79 @@ header{
     background-image: url('../images/header_gravy.png');
     background-position: center;
     background-size: cover;
-    @include standard_border;
+    @include standard_border($red);
 // ~~~~~~~~~~ Navigation menu ~~~~~~~~~~
     nav{
         display: flex;
-        flex-direction: column;
         @include background_animation($dither_black, 5s);
-        position: absolute;
         top: 0;
         left: 0;
-
-        width: 300px;
+        // Horizontal nav bar, visible by default but scrolls off the screen
+        &#horizontalnav{
+            flex-direction: row;
+            width: 90%;
+            position: absolute;
+            a{
+                img{
+                    display: none;
+                }
+            }
+        }
+        // Vertical nav, hidden by default, appears when scrolled (through JS)
+        &#verticalnav{
+            flex-direction: column;
+            width: 300px;
+            position: fixed;
+            z-index: 100;
+            // Hides the menu by default
+            transform: translate(-320px, -325px);
+            transition: transform 300ms;
+            &.visible{ // Shows the "menu" button
+                transform: translate(0px, -325px);
+                transition: transform 300ms;
+            }
+            &.show{ // Shows the rest of the menu
+                transform: translate(0px, 0px);
+                transition: transform 300ms;
+                a#navbutton img{
+                    transform: rotate(-90deg);
+                    transition: transform 300ms;
+                }
+            }
+        }
+        // Styles for the individual buttons, a tag is on the outside so the whole thing is hot
         a{
             flex-grow: 1;
-            @include button_border;
             height: 65px;
             background-color: $white;
             transition: background-color 200ms;
+            @include standard_border($black);
 
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
-            p{
+
+            // The "menu" button that togges the vertical menu
+            &#navbutton{
+                cursor: pointer;
+                img{
+                    transform: rotate(90deg);
+                    transition: transform 300ms;
+                }
+            }
+            p{ // The text within the buttons
                 padding: 10px;
                 color: $black;
                 transition: color 200ms;
             }
-            img{
+            img{ // The icon within the button
                 display: block;
                 background-color: $white;
                 transition: background-color 200ms;
             }
 
+            // Styles for when the buttons are hovered
             &:hover, &:focus, &:focus-within{
                 background-color: transparent;
                 transition: background-color 200ms;
@@ -67,6 +107,7 @@ header{
             }
         }
     }
+    // The page title, at the bottom of the header image
     h1#title{
         background-image: url('../images/dither_black.png');
         background-blend-mode: darken;
@@ -117,12 +158,12 @@ article{
             padding: 2px;
         }
         @include background_animation_reverse($dark_tile, 3s);
-        @include standard_border;
+        @include standard_border($white);
     }
     section.body{
         margin: 1em 2em 1em 2em;
         background-color: $black;
         padding: 8px;
-        @include standard_border;
+        @include standard_border($white);
     }
 }

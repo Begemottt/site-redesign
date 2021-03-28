@@ -160,7 +160,7 @@ header {
   background-image: url("../images/header_gravy.png");
   background-position: center;
   background-size: cover;
-  border: 2px solid #fff;
+  border: 2px solid #a14d3f;
   box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
   transition: box-shadow 300ms;
 }
@@ -170,26 +170,63 @@ header:hover, header:focus, header:focus-within {
 }
 header nav {
   display: flex;
-  flex-direction: column;
   background-image: url("../images/dither_black.png");
   background-repeat: repeat;
   animation: moving_background 5s linear infinite;
-  position: absolute;
   top: 0;
   left: 0;
+}
+header nav#horizontalnav {
+  flex-direction: row;
+  width: 90%;
+  position: absolute;
+}
+header nav#horizontalnav a img {
+  display: none;
+}
+header nav#verticalnav {
+  flex-direction: column;
   width: 300px;
+  position: fixed;
+  z-index: 100;
+  transform: translate(-320px, -325px);
+  transition: transform 300ms;
+}
+header nav#verticalnav.visible {
+  transform: translate(0px, -325px);
+  transition: transform 300ms;
+}
+header nav#verticalnav.show {
+  transform: translate(0px, 0px);
+  transition: transform 300ms;
+}
+header nav#verticalnav.show a#navbutton img {
+  transform: rotate(-90deg);
+  transition: transform 300ms;
 }
 header nav a {
   flex-grow: 1;
-  border: 8px solid transparent;
-  border-image: url("../images/border_button.png") 8 round;
   height: 65px;
   background-color: #fff;
   transition: background-color 200ms;
+  border: 2px solid #000;
+  box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 300ms;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+header nav a:hover, header nav a:focus, header nav a:focus-within {
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 300ms;
+}
+header nav a#navbutton {
+  cursor: pointer;
+}
+header nav a#navbutton img {
+  transform: rotate(90deg);
+  transition: transform 300ms;
 }
 header nav a p {
   padding: 10px;
