@@ -1,12 +1,17 @@
 // ~~~~~~~~~~ Mixin Delcarations ~~~~~~~~~~
 @mixin standard_border($color){
     border: 2px solid $color;
-    box-shadow: 6px 6px 0px $white_shadow;
+    box-shadow: 4px 4px 0px $white_shadow;
     transition: box-shadow 300ms;
     &:hover, &:focus, &:focus-within{
         box-shadow: 8px 8px 0px $white_shadow;
         transition: box-shadow 300ms;
     }
+}
+@mixin article_border($color){
+    border: 4px solid $color;
+    box-shadow: 4px 4px 0px $white;
+    transition: box-shadow 300ms;
 }
 @mixin image_border($image){
     border: 24px solid transparent;
@@ -14,6 +19,6 @@
 }
 @mixin button_border{
     border: 8px solid transparent;
-    border-image: url('../images/border_button.png') 8 round;
+    border-image: url('../images/button_border.png') 16 round;
 }
 // ~~~~~~~~~~~~~~~~~~~~

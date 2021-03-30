@@ -100,7 +100,7 @@ h1 {
 h2 {
   font-size: 2em;
   font-family: "Gothic A1", sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -117,6 +117,18 @@ strong {
 
 em {
   text-shadow: 2px 2px 0px #7cc264;
+}
+
+pre {
+  font-family: "Fira Mono", monospace;
+  color: #fff;
+  font-size: 1em;
+  background-color: #221f31;
+  padding: 1em;
+}
+pre::selection {
+  background-color: #a14d3f;
+  color: #fff;
 }
 
 a {
@@ -160,19 +172,11 @@ header {
   background-image: url("../images/header_gravy.png");
   background-position: center;
   background-size: cover;
-  border: 2px solid #a14d3f;
-  box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
-}
-header:hover, header:focus, header:focus-within {
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  border: 24px solid transparent;
+  border-image: url("../images/border_transparent.png") 24 stretch;
 }
 header nav {
   display: flex;
-  background-image: url("../images/dither_black.png");
-  background-repeat: repeat;
-  animation: moving_background 5s linear infinite;
   top: 0;
   left: 0;
 }
@@ -204,22 +208,31 @@ header nav#verticalnav.show a#navbutton img {
   transform: rotate(-90deg);
   transition: transform 300ms;
 }
+header nav#bottomnav {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  cursor: pointer;
+  transform: translateX(-310px);
+  transition: transform 300ms;
+}
+header nav#bottomnav.visible {
+  transform: translateX(0px);
+  transition: transform 300ms;
+}
 header nav a {
   flex-grow: 1;
   height: 65px;
   background-color: #fff;
   transition: background-color 200ms;
-  border: 2px solid #000;
-  box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  border: 8px solid transparent;
+  border-image: url("../images/button_border.png") 16 round;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-}
-header nav a:hover, header nav a:focus, header nav a:focus-within {
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
 }
 header nav a#navbutton {
   cursor: pointer;
@@ -239,7 +252,7 @@ header nav a img {
   transition: background-color 200ms;
 }
 header nav a:hover, header nav a:focus, header nav a:focus-within {
-  background-color: transparent;
+  background-color: #221f31;
   transition: background-color 200ms;
 }
 header nav a:hover p, header nav a:focus p, header nav a:focus-within p {
@@ -262,16 +275,25 @@ header h1#title {
   width: 100%;
 }
 
+#topbutton p {
+  font-size: 1em;
+}
+
 article {
   display: flex;
   flex-direction: column;
   width: 800px;
   margin: 10px auto 10px auto;
   padding: 0.5em;
-  border: 24px solid transparent;
-  border-image: url("../images/border_purple.png") 24 stretch;
+  border: 2px solid #9a93b7;
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 300ms;
   background-image: url("../images/dither_black.png");
   position: relative;
+}
+article:hover, article:focus, article:focus-within {
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 300ms;
 }
 article:nth-child(odd) {
   right: 2rem;
@@ -283,43 +305,76 @@ article section.header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1em;
-  background-image: url("../images/dark_tile.png");
+  padding: 1em 1em 0.5em 1em;
+  z-index: 20;
+  background-image: url("../images/purple_tile.png");
   background-repeat: repeat;
-  animation: moving_background_reverse 3s linear infinite;
+  animation: moving_background_reverse 5s linear infinite;
   border: 2px solid #fff;
-  box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
   transition: box-shadow 300ms;
 }
 article section.header h2 {
   color: #fff;
   margin: 0, 0, 0.25em, 0.5em;
+  padding: 0.5em;
+  background-color: #000;
+  border: 1px solid #fff;
+  z-index: 50;
 }
 article section.header p.byline {
   color: #fff;
   font-size: 0.75em;
   font-family: "Fira Mono", monospace;
-  margin-left: 1em;
-  padding: 2px;
+  margin: 0 1em 0 1em;
+  padding: 4px;
+  background-color: #000;
+  border: 1px solid #fff;
+  z-index: 25;
+  transform: translateY(-6px);
 }
 article section.header:hover, article section.header:focus, article section.header:focus-within {
   box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
   transition: box-shadow 300ms;
 }
 article section.body {
-  margin: 1em 2em 1em 2em;
+  margin: 0 2em 1em 2em;
+  transform: translateY(-6px);
   background-color: #000;
   padding: 8px;
   border: 2px solid #fff;
-  box-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
   transition: box-shadow 300ms;
+  z-index: 15;
 }
 article section.body:hover, article section.body:focus, article section.body:focus-within {
   box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
   transition: box-shadow 300ms;
 }
 
+footer {
+  background: #fff;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+footer p {
+  color: #000;
+  font-size: 0.75em;
+}
+footer p a {
+  color: #a14d3f;
+}
+footer p a:hover, footer p a:focus, footer p a:focus-within {
+  color: #000;
+}
+
 html {
   color: #000;
   background-color: #fff;
+}
+
+* {
+  background-clip: padding-box;
 }

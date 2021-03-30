@@ -1,0 +1,131 @@
+// ~~~~~~~~~~ Page header ~~~~~~~~~~
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 45vw;
+    width: 90vw;
+    margin: 1em auto 1em auto;
+    // Background Image
+    background-image: url('../images/header_gravy.png');
+    background-position: center;
+    background-size: cover;
+    @include image_border($transparent_border);
+// ~~~~~~~~~~ Navigation menu ~~~~~~~~~~
+    nav{
+        display: flex;
+        // @include background_animation($dither_black, 5s);
+        top: 0;
+        left: 0;
+        // Horizontal nav bar, visible by default but scrolls off the screen
+        &#horizontalnav{
+            flex-direction: row;
+            width: 90%;
+            position: absolute;
+            a{
+                img{
+                    display: none;
+                }
+            }
+        }
+        // Vertical nav, hidden by default, appears when scrolled (through JS)
+        &#verticalnav{
+            flex-direction: column;
+            width: 300px;
+            position: fixed;
+            z-index: 100;
+            // Hides the menu by default
+            transform: translate(-320px, -325px);
+            transition: transform 300ms;
+            &.visible{ // Shows the "menu" button
+                transform: translate(0px, -325px);
+                transition: transform 300ms;
+            }
+            &.show{ // Shows the rest of the menu
+                transform: translate(0px, 0px);
+                transition: transform 300ms;
+                a#navbutton img{
+                    transform: rotate(-90deg);
+                    transition: transform 300ms;
+                }
+            }
+        }
+        // Bottom nav, the button that takes you back to the top, plus maybe other stuff???
+        &#bottomnav{
+            position: fixed;
+            top: auto;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            cursor: pointer;
+            transform: translateX(-310px);
+            transition: transform 300ms;
+            &.visible{
+                transform: translateX(0px);
+                transition: transform 300ms;
+            }
+        }
+        // Styles for the individual buttons, a tag is on the outside so the whole thing is hot
+        a{
+            flex-grow: 1;
+            height: 65px;
+            background-color: $white;
+            transition: background-color 200ms;
+            @include button_border;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            // The "menu" button that toggles the vertical menu
+            &#navbutton{
+                cursor: pointer;
+                img{
+                    transform: rotate(90deg);
+                    transition: transform 300ms;
+                }
+            }
+            p{ // The text within the buttons
+                padding: 10px;
+                color: $black;
+                transition: color 200ms;
+            }
+            img{ // The icon within the button
+                display: block;
+                background-color: $white;
+                transition: background-color 200ms;
+            }
+
+            // Styles for when the buttons are hovered
+            &:hover, &:focus, &:focus-within{
+                background-color: $nearblack;
+                transition: background-color 200ms;
+                p{
+                    color: $white;
+                    transition: color 200ms;
+                }
+                img{
+                    background-color: $red;
+                    transition: background-color 200ms;
+                }
+            }
+        }
+    }
+    // The page title, at the bottom of the header image
+    h1#title{
+        background-image: url('../images/dither_black.png');
+        background-blend-mode: darken;
+        text-shadow: 4px 4px 0px $shadow;
+        color: $white;
+        font-weight: bolder;
+        margin: 0.5em;
+        padding: 4px;
+        border: 1px solid $white;
+        width: 100%;
+    }
+}
+#topbutton p{
+    font-size: 1em;
+}
