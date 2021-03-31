@@ -19,6 +19,7 @@ article{
     margin: 10px auto 10px auto;
     padding: 0.5em;
     @include standard_border($lpurple);
+    @include light_shadow;
     background-image: $dither_black;
     position: relative;
     &:nth-child(odd){
@@ -63,8 +64,62 @@ article{
         background-color: $black;
         padding: 8px;
         @include standard_border($white);
+        @include color_shadow($white);
         z-index: 15;
     }
+
+    // For single-article pages
+    &.single{
+        left: 0;
+        right: 0;
+        @include standard_border($main);
+        @include color_shadow($mdark);
+    }
+}
+
+// ~~~~~~~~~~ List Page Styles ~~~~~~~~~~
+article.list{
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-color: $nearblack;
+    z-index: 100;
+    a{
+        padding: 8px;
+        margin: 0;
+        text-decoration: none;
+        section.list_item{
+            margin: 0;
+            p span.byline{
+                font-size: 0.75em;
+            }
+            p.description{
+                font-size: 1em;
+                margin: 0.5em;
+                padding: 4px;
+                border: 1px solid $white;
+            }
+        }
+        &:hover, &:focus, &:focus-within{
+            background-color: $black;
+            p{color: $lred;}
+        }
+    }
+    @include popout_shadow($red);
+}
+
+// Styles for list page wrapper
+article.portfolio{
+    margin: 1em auto 1em auto;
+    width: 90%;
+    @include image_border($red_border);
+    right: 0;
+    left: 0;
+    padding: 0;
 }
 
 // ~~~~~~~~~~ Footer ~~~~~~~~~~
@@ -74,6 +129,7 @@ footer{
     position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: 2em;
     p{
         color: $black;
         font-size: 0.75em;

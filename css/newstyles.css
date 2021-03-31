@@ -267,12 +267,18 @@ header h1#title {
   background-image: url("../images/dither_black.png");
   background-blend-mode: darken;
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 0px #fff;
+  transition: box-shadow 500ms;
   color: #fff;
   font-weight: bolder;
   margin: 0.5em;
   padding: 4px;
   border: 1px solid #fff;
   width: 100%;
+}
+header h1#title:hover, header h1#title:focus, header h1#title:focus-within {
+  box-shadow: 4px 4px 0px #fff;
+  transition: box-shadow 200ms;
 }
 
 #topbutton p {
@@ -287,13 +293,13 @@ article {
   padding: 0.5em;
   border: 2px solid #9a93b7;
   box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  transition: box-shadow 500ms;
   background-image: url("../images/dither_black.png");
   position: relative;
 }
 article:hover, article:focus, article:focus-within {
   box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  transition: box-shadow 200ms;
 }
 article:nth-child(odd) {
   right: 2rem;
@@ -311,8 +317,6 @@ article section.header {
   background-repeat: repeat;
   animation: moving_background_reverse 5s linear infinite;
   border: 2px solid #fff;
-  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
 }
 article section.header h2 {
   color: #fff;
@@ -333,23 +337,83 @@ article section.header p.byline {
   z-index: 25;
   transform: translateY(-6px);
 }
-article section.header:hover, article section.header:focus, article section.header:focus-within {
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
-}
 article section.body {
   margin: 0 2em 1em 2em;
   transform: translateY(-6px);
   background-color: #000;
   padding: 8px;
   border: 2px solid #fff;
-  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  box-shadow: 2px 2px 0px #fff;
+  transition: box-shadow 500ms;
   z-index: 15;
 }
 article section.body:hover, article section.body:focus, article section.body:focus-within {
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 300ms;
+  box-shadow: 4px 4px 0px #fff;
+  transition: box-shadow 200ms;
+}
+article.single {
+  left: 0;
+  right: 0;
+  border: 2px solid #918454;
+  box-shadow: 2px 2px 0px #524A2F;
+  transition: box-shadow 500ms;
+}
+article.single:hover, article.single:focus, article.single:focus-within {
+  box-shadow: 4px 4px 0px #524A2F;
+  transition: box-shadow 200ms;
+}
+
+article.list {
+  right: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background-color: #221f31;
+  z-index: 100;
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px #a14d3f;
+  transition: transform 250ms, box-shadow 250ms;
+}
+article.list a {
+  padding: 8px;
+  margin: 0;
+  text-decoration: none;
+}
+article.list a section.list_item {
+  margin: 0;
+}
+article.list a section.list_item p span.byline {
+  font-size: 0.75em;
+}
+article.list a section.list_item p.description {
+  font-size: 1em;
+  margin: 0.5em;
+  padding: 4px;
+  border: 1px solid #fff;
+}
+article.list a:hover, article.list a:focus, article.list a:focus-within {
+  background-color: #000;
+}
+article.list a:hover p, article.list a:focus p, article.list a:focus-within p {
+  color: #ea9182;
+}
+article.list:hover, article.list:focus, article.list:focus-within {
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0px #a14d3f;
+  transition: transform 250ms, box-shadow 250ms;
+}
+
+article.portfolio {
+  margin: 1em auto 1em auto;
+  width: 90%;
+  border: 24px solid transparent;
+  border-image: url("../images/border_red.png") 24 stretch;
+  right: 0;
+  left: 0;
+  padding: 0;
 }
 
 footer {
@@ -358,6 +422,7 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 2em;
 }
 footer p {
   color: #000;

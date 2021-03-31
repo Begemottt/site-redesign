@@ -118,6 +118,7 @@ header{
         background-image: url('../images/dither_black.png');
         background-blend-mode: darken;
         text-shadow: 4px 4px 0px $shadow;
+        @include color_shadow($white);
         color: $white;
         font-weight: bolder;
         margin: 0.5em;
