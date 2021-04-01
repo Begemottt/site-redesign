@@ -66,6 +66,10 @@ select {
   font: inherit;
 }
 
+* {
+  outline: none;
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -433,6 +437,63 @@ footer p a {
 }
 footer p a:hover, footer p a:focus, footer p a:focus-within {
   color: #000;
+}
+
+form {
+  max-width: 600px;
+  margin: 8px auto 8px auto;
+  padding: 8px;
+  background-color: #524A2F;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 4px 4px 8px 2px #fff, -4px -4px 8px 2px #fff;
+}
+form input {
+  width: 75%;
+  margin: 8px;
+  padding: 4px;
+  outline: none;
+  box-shadow: 2px 2px 0px #000;
+  border: 4px solid #918454;
+}
+form input:focus {
+  border: 4px solid #a14d3f;
+}
+form label {
+  color: #fff;
+  font-size: 2em;
+  font-family: "Fira Mono", monospace;
+  text-shadow: 4px 4px 0px #918454;
+}
+form button {
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #918454;
+  margin: 4px;
+  font-family: "Fira Mono", monospace;
+  font-size: 1em;
+  position: relative;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 2px 0px #000;
+}
+form button:hover, form button:focus, form button:focus-within {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #a14d3f;
+}
+form button:active {
+  outline: none;
+  background-color: #a14d3f;
+  color: #fff;
+  border: 2px solid #000;
+  left: 2px;
+  top: 2px;
+  box-shadow: 0px 0px 0px #000;
+}
+form button#reset_button, form button#submit_button {
+  cursor: crosshair;
+  width: 45%;
 }
 
 html {

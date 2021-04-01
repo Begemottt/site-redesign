@@ -36,6 +36,20 @@ switch(THIS_PAGE){
         $query = '';
         $page_type = 'article';
     break;
+    case 'login.php' :
+        $title = 'Super Secret Login Page';
+        $main_headline = 'SUPER SECRET LOGIN PAGE!!';
+        $header_class = 'login';
+        $query = '';
+        $page_type = '';
+    break;
+    case 'cms.php' :
+        $title = 'Content Management System';
+        $main_headline = 'Content Management System';
+        $header_class = 'cms';
+        $query = "SELECT * FROM posts";
+        $page_type = '';
+    break;
 
 
 } // End switch
@@ -81,9 +95,9 @@ function Make_Page($sql, $type){
                 } else {
                     header('Location:invalid_id.php');
                 }
-
+                // This one is designed to follow after short_header.php
                 ?>
-                        <h1 id="title"><?= $row['title'] ?></h1>
+                <h1 id="title"><?= $row['title'] ?></h1>
                 </header>
                 <main>
                 <article class="single">
@@ -94,6 +108,20 @@ function Make_Page($sql, $type){
                         <?= $row['content'] ?>
                     </section>
                 </article>
+                <?php
+            } else if ($type === 'backend'){
+                $id = (int)$row['content_id'];
+                ?>
+                <fieldset>
+                <article class="list">
+                    <a href="post_view.php?id=<?= $id ?>">
+                    <section class="list_item">
+                    <p><?= $row['title'] ?> <span class="byline"> - <?= $row['author'] ?> - <?= $row['date_added'] ?></span></p>
+                    <p class="description"> > <?= $row['description'] ?></p>
+                    </section>
+                    </a>
+                </article>
+                </fieldset>
                 <?php
             } // End If
         } // End While
