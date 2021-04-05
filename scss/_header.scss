@@ -29,6 +29,18 @@ header{
                 }
             }
         }
+        // Admin nav bar, sits directly below the horizontal nav at the top of the screen
+        &#adminnav{
+            flex-direction: row;
+            width: 90%;
+            position: absolute;
+            top: 65px; 
+            a{
+                img{
+                    display: none;
+                }
+            }
+        }
         // Vertical nav, hidden by default, appears when scrolled (through JS)
         &#verticalnav{
             flex-direction: column;

@@ -87,29 +87,73 @@ article.list{
     border: none;
     box-shadow: none;
     background-color: $nearblack;
-    z-index: 100;
-    a{
-        padding: 8px;
-        margin: 0;
-        text-decoration: none;
-        section.list_item{
-            margin: 0;
-            p span.byline{
-                font-size: 0.75em;
+    background-image: none;
+    z-index: 100;display: flex;
+    flex-direction: row;
+    section.backend_list{
+        width: 75%;
+    }
+    section.backend_buttons{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        a{
+            flex-grow: 1;
+            border: 1px solid $red;
+            text-align: center;
+            color: $white;
+            background-color: $lred;
+            &.delete{
+                p{color: $red;}
+                background-color: $black;
+                &:hover, &:focus, &:focus-within{
+                    p{color: $black;}
+                    background-color: $red;
+                }
             }
-            p.description{
-                font-size: 1em;
-                margin: 0.5em;
-                padding: 4px;
-                border: 1px solid $white;
+            &.edit{
+                p{color: $white;}
+                background-color: $green;
+                &:hover, &:focus, &:focus-within{
+                    p{color: $green;}
+                    background-color: $white;
+                }
             }
-        }
-        &:hover, &:focus, &:focus-within{
-            background-color: $black;
-            p{color: $lred;}
+            p{
+                margin: 4px;
+            }
         }
     }
-    @include popout_shadow($red);
+    section{
+        &:hover, &:focus, &:focus-within{
+            background-color: $black;
+            a p{color: $lred;}
+        }
+        a{
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            section{
+                padding: 8px;
+                margin: 0;
+                p span.byline{
+                    font-size: 0.75em;
+                }
+                p.description{
+                    font-size: 1em;
+                    margin: 0.5em;
+                    padding: 4px;
+                    border: 1px solid $white;
+                }
+            }
+        }
+    }
+    @include popout_shadow;
+}
+article.cms{
+    padding: 0;
+    background-color: $red;
+    background-image: none;
 }
 
 // Styles for list page wrapper
@@ -120,8 +164,11 @@ article.portfolio{
     right: 0;
     left: 0;
     padding: 0;
+    @include background_animation($red_tile, 5s);
+    article.list section{
+        width: 100%;
+    }
 }
-
 // ~~~~~~~~~~ Footer ~~~~~~~~~~
 footer{
     background: $white;

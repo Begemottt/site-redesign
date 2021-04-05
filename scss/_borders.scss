@@ -13,14 +13,4 @@
     border: 8px solid transparent;
     border-image: url('../images/button_border.png') 16 round;
 }
-@mixin popout_shadow($color){
-    transform: translate(0px, 0px);
-    box-shadow: 0px 0px 0px $color;
-    transition: transform 250ms, box-shadow 250ms;
-    &:hover, &:focus, &:focus-within{
-        transform: translate(-4px, -4px);
-        box-shadow: 4px 4px 0px $color;
-        transition: transform 250ms, box-shadow 250ms;
-    }
-}
 // ~~~~~~~~~~~~~~~~~~~~

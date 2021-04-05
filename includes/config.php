@@ -9,45 +9,52 @@ define('THIS_PAGE', basename($_SERVER['PHP_SELF']));
 // Switch for individual page variables
 switch(THIS_PAGE){
     case 'index.php' :
-        $title = "Robin VanGilder: Seattle-based Web Design and Development";
+        $page_title = "Robin VanGilder: Seattle-based Web Design and Development";
         $main_headline = "Robin VanGilder: Web Design & Development";
         $header_class = 'main';
         $query = "SELECT * FROM posts WHERE category = 'main'";
         $page_type = 'topic';
     break;
     case 'resume.php' :
-        $title = "Resume";
+        $page_title = "Resume";
         $main_headline = "My Current Resume";
         $header_class = 'resume';
         $query = "SELECT * FROM posts WHERE category = 'resume'";
         $page_type = 'topic';
     break;
     case 'portfolio.php' :
-        $title = "Portfolio";
+        $page_title = "Portfolio";
         $main_headline = "My Portfolio";
         $header_class = 'portfolio';
         $query = "SELECT * FROM posts WHERE category = 'main'";
         $page_type = 'list';
     break;
     case 'post_view.php' :
-        $title = '';
+        $page_title = '';
         $main_headline = $post_title;
         $header_class = 'small';
         $query = '';
         $page_type = 'article';
     break;
     case 'login.php' :
-        $title = 'Super Secret Login Page';
+        $page_title = 'Super Secret Login Page';
         $main_headline = 'SUPER SECRET LOGIN PAGE!!';
         $header_class = 'login';
         $query = '';
         $page_type = '';
     break;
     case 'cms.php' :
-        $title = 'Content Management System';
+        $page_title = 'Content Management System';
         $main_headline = 'Content Management System';
         $header_class = 'cms';
         $query = "SELECT * FROM posts";
+        $page_type = 'backend';
+    break;
+    case 'add_content.php' :
+        $page_title = '';
+        $main_headline = '';
+        $header_class = 'small';
+        $query = '';
         $page_type = '';
     break;
 
@@ -79,12 +86,14 @@ function Make_Page($sql, $type){
                 $id = (int)$row['content_id'];
                 ?>
                 <article class="list">
+                    <section>
                     <a href="post_view.php?id=<?= $id ?>">
                     <section class="list_item">
                     <p><?= $row['title'] ?> <span class="byline"> - <?= $row['author'] ?> - <?= $row['date_added'] ?></span></p>
                     <p class="description"> > <?= $row['description'] ?></p>
                     </section>
                     </a>
+                    </section>
                 </article>
 
                 <?php
@@ -112,16 +121,20 @@ function Make_Page($sql, $type){
             } else if ($type === 'backend'){
                 $id = (int)$row['content_id'];
                 ?>
-                <fieldset>
                 <article class="list">
-                    <a href="post_view.php?id=<?= $id ?>">
-                    <section class="list_item">
-                    <p><?= $row['title'] ?> <span class="byline"> - <?= $row['author'] ?> - <?= $row['date_added'] ?></span></p>
-                    <p class="description"> > <?= $row['description'] ?></p>
+                    <section class="backend_list">
+                        <a href="post_view.php?id=<?= $id ?>">
+                            <section class="list_item">
+                                <p><?= $row['title'] ?> <span class="byline"> - <?= $row['author'] ?> - <?= $row['date_added'] ?></span></p>
+                                <p class="description"> > <?= $row['description'] ?></p>
+                            </section>
+                        </a>
                     </section>
-                    </a>
+                    <section class="backend_buttons">
+                        <a href="delete_content.php?id=<?= $id ?>" class="delete"><p>DELETE</p></a>
+                        <a href="add_content.php?id=<?= $id ?>" class="edit"><p>EDIT</p></a>
+                    </section>
                 </article>
-                </fieldset>
                 <?php
             } // End If
         } // End While

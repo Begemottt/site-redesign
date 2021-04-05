@@ -192,6 +192,15 @@ header nav#horizontalnav {
 header nav#horizontalnav a img {
   display: none;
 }
+header nav#adminnav {
+  flex-direction: row;
+  width: 90%;
+  position: absolute;
+  top: 65px;
+}
+header nav#adminnav a img {
+  display: none;
+}
 header nav#verticalnav {
   flex-direction: column;
   width: 300px;
@@ -376,38 +385,88 @@ article.list {
   border: none;
   box-shadow: none;
   background-color: #221f31;
+  background-image: none;
   z-index: 100;
+  display: flex;
+  flex-direction: row;
   transform: translate(0px, 0px);
-  box-shadow: 0px 0px 0px #a14d3f;
-  transition: transform 250ms, box-shadow 250ms;
+  transition: transform 250ms;
 }
-article.list a {
-  padding: 8px;
+article.list section.backend_list {
+  width: 75%;
+}
+article.list section.backend_buttons {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+article.list section.backend_buttons a {
+  flex-grow: 1;
+  border: 1px solid #a14d3f;
+  text-align: center;
+  color: #fff;
+  background-color: #ea9182;
+}
+article.list section.backend_buttons a.delete {
+  background-color: #000;
+}
+article.list section.backend_buttons a.delete p {
+  color: #a14d3f;
+}
+article.list section.backend_buttons a.delete:hover, article.list section.backend_buttons a.delete:focus, article.list section.backend_buttons a.delete:focus-within {
+  background-color: #a14d3f;
+}
+article.list section.backend_buttons a.delete:hover p, article.list section.backend_buttons a.delete:focus p, article.list section.backend_buttons a.delete:focus-within p {
+  color: #000;
+}
+article.list section.backend_buttons a.edit {
+  background-color: #7cc264;
+}
+article.list section.backend_buttons a.edit p {
+  color: #fff;
+}
+article.list section.backend_buttons a.edit:hover, article.list section.backend_buttons a.edit:focus, article.list section.backend_buttons a.edit:focus-within {
+  background-color: #fff;
+}
+article.list section.backend_buttons a.edit:hover p, article.list section.backend_buttons a.edit:focus p, article.list section.backend_buttons a.edit:focus-within p {
+  color: #7cc264;
+}
+article.list section.backend_buttons a p {
+  margin: 4px;
+}
+article.list section:hover, article.list section:focus, article.list section:focus-within {
+  background-color: #000;
+}
+article.list section:hover a p, article.list section:focus a p, article.list section:focus-within a p {
+  color: #ea9182;
+}
+article.list section a {
+  padding: 0;
   margin: 0;
   text-decoration: none;
 }
-article.list a section.list_item {
+article.list section a section {
+  padding: 8px;
   margin: 0;
 }
-article.list a section.list_item p span.byline {
+article.list section a section p span.byline {
   font-size: 0.75em;
 }
-article.list a section.list_item p.description {
+article.list section a section p.description {
   font-size: 1em;
   margin: 0.5em;
   padding: 4px;
   border: 1px solid #fff;
 }
-article.list a:hover, article.list a:focus, article.list a:focus-within {
-  background-color: #000;
-}
-article.list a:hover p, article.list a:focus p, article.list a:focus-within p {
-  color: #ea9182;
-}
 article.list:hover, article.list:focus, article.list:focus-within {
   transform: translate(-4px, -4px);
-  box-shadow: 4px 4px 0px #a14d3f;
-  transition: transform 250ms, box-shadow 250ms;
+  transition: transform 250ms;
+}
+
+article.cms {
+  padding: 0;
+  background-color: #a14d3f;
+  background-image: none;
 }
 
 article.portfolio {
@@ -418,6 +477,12 @@ article.portfolio {
   right: 0;
   left: 0;
   padding: 0;
+  background-image: url("../images/red_tile.png");
+  background-repeat: repeat;
+  animation: moving_background 5s linear infinite;
+}
+article.portfolio article.list section {
+  width: 100%;
 }
 
 footer {
@@ -458,6 +523,11 @@ form input {
 }
 form input:focus {
   border: 4px solid #a14d3f;
+  background-color: #000;
+  color: #fff;
+}
+form input::selection {
+  background-color: #a14d3f;
 }
 form label {
   color: #fff;
@@ -494,6 +564,13 @@ form button:active {
 form button#reset_button, form button#submit_button {
   cursor: crosshair;
   width: 45%;
+}
+form.add_content label {
+  font-size: 1em;
+  display: block;
+}
+form.add_content input {
+  width: 80%;
 }
 
 html {

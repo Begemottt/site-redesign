@@ -21,3 +21,13 @@
     to{background-position: -24px -24px}
 }
 // ~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~ Misc. Animations ~~~~~~~~~~
+@mixin popout_shadow{
+    transform: translate(0px, 0px);
+    transition: transform 250ms;
+    &:hover, &:focus, &:focus-within{
+        transform: translate(-4px, -4px);
+        transition: transform 250ms;
+    }
+}
