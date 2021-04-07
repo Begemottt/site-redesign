@@ -91,7 +91,23 @@ if(isset($_POST['edit']) || isset($_POST['new'])){
             }
             // Close the connection
             @mysqli_close($db);
-            ;
         }
     } // End if
 } // End isset
+
+// Function for DELETING an existing post!
+if(isset($_POST['confirm_delete'], $_POST['id'])){
+    $id = (int)$_POST['id'];
+    $sql = "DELETE FROM posts WHERE content_id={$id}";
+
+    // Run the query!
+    if (!mysqli_query($db, $sql)){
+        array_push($errors, "An SQL error occurred: ".mysqli_error($db));
+    } else{
+        header('Location: cms.php?status=delete');
+    }
+    // Close the connection
+    @mysqli_close($db);
+} else if(isset($_POST['deny_delete'])){
+    header('Location: cms.php');
+}

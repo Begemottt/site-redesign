@@ -3,36 +3,42 @@
     font-family: 'Nanum Gothic Coding', serif;
 }
 @mixin font_deco{  
-    font-family: 'DotGothic16', cursive;
-}
-@mixin font_sans{
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 400;
+    font-family: 'Nixie One', cursive;
 }
 @mixin font_code{  
     font-family: 'Fira Mono', monospace;
 }
 
 // ~~~~~~~~~~Basic Designations~~~~~~~~~~
-
+// ALL headings!!
+h1, h2, h3, h4, h5, h6{
+    color: $white;
+    background-color: $black;
+    @include font_deco;
+}
 h1{
     font-size: 3em;
-    @include font_code();
+    @include font_deco;
     color: $white;
 }
 h2{
-    font-size: 2em;
-    @include font_sans();
+    font-size: 2.5em;
+    @include font_deco;
     color: $white;
+    &.article_header{
+        text-shadow: 4px 4px 2px $lpurple;
+        background-color: $black;
+        padding: 8px;
+    }
 }
 p{
-    font-size: 1.5em;
-    @include font_body();
+    font-size: 1.25em;
+    @include font_body;
     @include text_shadow;
-    color: $white;
+    color: $black;
 }
 strong{
-    text-shadow: 2px 2px 0px $red;
+    text-shadow: 2px 2px 0px $lred;
 }
 em{
     text-shadow: 2px 2px 0px $green;
@@ -52,16 +58,17 @@ pre{
 // ~~~~~~~~~~Link Styles~~~~~~~~~~
 
 a{
-    color: $white;
-    text-decoration-color: $white;
-    text-shadow: 1px 1px 0px $white;
-    transition: color 200ms, text-shadow 200ms;
+    color: $red;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px $lred;
+    transition: color 200ms;
+    background-color: $white;
 }
 a:hover, a:focus, a:focus-within{
     color: $nearblack;
-    text-shadow: -2px -2px 0px $black;
-    transition: color 200ms, text-shadow 200ms;
-    background-color: $white;
+    transition: color 200ms, background-color 200ms;
+    background-color: $lred;
+    text-shadow: 0px 0px transparent;
 }
 
 // ~~~~~Nav Bar Styles~~~~~
@@ -70,6 +77,6 @@ a:hover, a:focus, a:focus-within{
 
 //~~~~~~~~~~Selection Style~~~~~~~~~~
 ::selection{
-    background-color: $white;
-    color: $black;
+    background-color: $red;
+    color: $white;
 }

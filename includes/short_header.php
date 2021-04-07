@@ -9,9 +9,9 @@
 
     <!-- Master CSS sheet, generated from the myriad SCSS files -->
     <link rel="stylesheet" href="css/newstyles.css">
-    <!-- Google fonts: Fira Mono, Nanum Gothic Coding, Gothic A1, and DotGothic16 -->
+    <!-- Google fonts: Fira Mono, Nanum Gothic Coding, and Nixie One -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Fira+Mono&family=Gothic+A1:wght@100;300;400;700&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nanum+Gothic+Coding&family=Nixie+One&display=swap" rel="stylesheet">
     <script src="./ckeditor/ckeditor.js"></script>
 
 </head>

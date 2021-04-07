@@ -1,0 +1,15 @@
+// Sizes
+// Small: < 800px
+// Large: 801px >
+
+@mixin size ($size) {
+    @if $size == sm{
+        @media screen and (max-width: 800px) {
+            @content;
+        }
+    } @else if $size == lg{
+        @media screen and (min-width: 801px){
+            @content;
+        }
+    }
+}

@@ -39,9 +39,10 @@ if(isset($_GET['id'])){
 }
 
 include './includes/short_header.php';?>
-    <h1 id="title"><?= $content_title ?> [ <?= $form_type ?> ]</h1>
 </header>
 <main>
+<section class="headline"><h1 id="title"><?= $content_title ?></h1></section>
+<section class="page_headline"></section>
 <article class='single'>
     <section class="header">
     <?php 

@@ -1,17 +1,6 @@
 // ~~~~~~~~~~ Page header ~~~~~~~~~~
 header{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 45vw;
-    width: 90vw;
-    margin: 1em auto 1em auto;
-    // Background Image
-    background-image: url('../images/header_gravy.png');
-    background-position: center;
-    background-size: cover;
-    @include image_border($transparent_border);
+
 // ~~~~~~~~~~ Navigation menu ~~~~~~~~~~
     nav{
         display: flex;
@@ -20,13 +9,19 @@ header{
         left: 0;
         // Horizontal nav bar, visible by default but scrolls off the screen
         &#horizontalnav{
-            flex-direction: row;
-            width: 90%;
-            position: absolute;
-            a{
-                img{
-                    display: none;
+            @include size(lg){
+                flex-direction: row;
+                width: 90%;
+                position: relative;
+                margin: 0 auto 4px auto;
+                a{
+                    img{
+                        display: none;
+                    }
                 }
+            }
+            @include size(sm){
+                display: none;
             }
         }
         // Admin nav bar, sits directly below the horizontal nav at the top of the screen
@@ -44,15 +39,25 @@ header{
         // Vertical nav, hidden by default, appears when scrolled (through JS)
         &#verticalnav{
             flex-direction: column;
-            width: 300px;
+            @include size(lg){
+                width: 300px;
+            }
+            @include size(sm){
+                width: 100vw;
+            }
             position: fixed;
-            z-index: 100;
-            // Hides the menu by default
-            transform: translate(-320px, -325px);
+            z-index: 200;
             transition: transform 300ms;
-            &.visible{ // Shows the "menu" button
+            // Hides the menu by default
+            @include size(lg){
+                transform: translate(-320px, -325px);
+                &.visible{ // Shows the "menu" button
+                    transform: translate(0px, -325px);
+                    transition: transform 300ms;
+                }
+            }
+            @include size(sm){
                 transform: translate(0px, -325px);
-                transition: transform 300ms;
             }
             &.show{ // Shows the rest of the menu
                 transform: translate(0px, 0px);
@@ -69,7 +74,7 @@ header{
             top: auto;
             bottom: 0;
             left: 0;
-            z-index: 100;
+            z-index: 200;
             cursor: pointer;
             transform: translateX(-310px);
             transition: transform 300ms;
@@ -81,6 +86,7 @@ header{
         // Styles for the individual buttons, a tag is on the outside so the whole thing is hot
         a{
             flex-grow: 1;
+            font-size: 1.5em;
             height: 65px;
             background-color: $white;
             transition: background-color 200ms;
@@ -125,20 +131,50 @@ header{
             }
         }
     }
-    // The page title, at the bottom of the header image
-    h1#title{
-        background-image: url('../images/dither_black.png');
-        background-blend-mode: darken;
-        text-shadow: 4px 4px 0px $shadow;
-        @include color_shadow($white);
-        color: $white;
-        font-weight: bolder;
-        margin: 0.5em;
-        padding: 4px;
-        border: 1px solid $white;
-        width: 100%;
-    }
 }
 #topbutton p{
     font-size: 1em;
+}
+
+// ~~~~~~~~~~ Title & Header Image ~~~~~~~~~~
+section.page_headline{
+    @include size(lg){
+        @include image_border($transparent_border);
+        height: 45vw;
+        width: 90vw;
+        margin: 0 auto 1em auto;
+    }
+    @include size(sm){
+        width: 100%;
+        height: 50vh;
+        margin: 0;
+    }
+    // Background Image
+    background-image: url('../images/header_gravy.png');
+    background-position: center;
+    background-size: cover;
+}
+// Page title
+section.headline{
+    @include background_animation($red_tile, 10s);
+    @include standard_shadow;
+    @include standard_border($red);
+    text-align: center;
+    @include size(lg){
+        width: 90%;
+        margin: 0 auto 1em auto;
+    }
+    @include size(sm){
+        width: 100%;
+        margin: 65px auto 0 auto;
+    }
+    h1#title{
+        font-size: 2.5em;
+        color: $white;
+        text-shadow: 4px 4px 0px $lpurple;
+        background-color: $nearblack;
+        @include standard_border($red);
+        padding: 4px;
+        margin: 12px;
+    }
 }

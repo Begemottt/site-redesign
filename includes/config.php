@@ -31,7 +31,7 @@ switch(THIS_PAGE){
     break;
     case 'post_view.php' :
         $page_title = '';
-        $main_headline = $post_title;
+        $main_headline = '';
         $header_class = 'small';
         $query = '';
         $page_type = 'article';
@@ -57,6 +57,13 @@ switch(THIS_PAGE){
         $query = '';
         $page_type = '';
     break;
+    case 'add_content.php' :
+        $page_title = '';
+        $main_headline = '';
+        $header_class = 'small';
+        $query = '';
+        $page_type = '';
+    break;
 
 
 } // End switch
@@ -74,7 +81,7 @@ function Make_Page($sql, $type){
                 ?>
                 <article>
                     <section class="header">
-                        <h2><?= $row['title'] ?></h2>
+                        <h2 class="article_header"><?= $row['title'] ?></h2>
                         <p class="byline"><?= $row['author'] ?> - Posted <?= $row['date_added'] ?></p>
                     </section>
                     <section class="body">
@@ -106,9 +113,11 @@ function Make_Page($sql, $type){
                 }
                 // This one is designed to follow after short_header.php
                 ?>
-                <h1 id="title"><?= $row['title'] ?></h1>
                 </header>
                 <main>
+                <section class="headline"><h1 id="title"><?= $post_title ?></h1></section>
+                <section class="page_headline"></section>
+
                 <article class="single">
                     <section class="header">
                         <p class="byline"><?= $row['author'] ?> - Posted <?= $row['date_added'] ?></p>
