@@ -54,7 +54,7 @@ if(isset($_POST['edit']) || isset($_POST['new'])){
     $content =  mysqli_real_escape_string($db, $_POST['editor1']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
     $date = date('y-m-d');
-    $category = mysqli_real_escape_string($db, $_POST['category']);
+    $category_id = (int)$_POST['category'];
     // Then, check to see if anything is empty.
     if(empty($title)){
         array_push($errors, 'A title is required.');
@@ -68,21 +68,25 @@ if(isset($_POST['edit']) || isset($_POST['new'])){
     if(empty($description)){
         array_push($errors, 'A short description is required.');
     }
-    if(empty($category)){
+    if(empty($category_id) || !is_integer($category_id)){
         array_push($errors, 'A category is required.');
     }
     // Then, if there are no errors, add or edit the data!
     if (count($errors)==0){
         if(isset($_POST['new'])){ // If this is a new post
-            $sql = "INSERT INTO posts (title, author, content, description, date_added, category) VALUES ('{$title}', '{$author}', '{$content}', '{$description}', '{$date}', '{$category}');";
+            $sql = "INSERT INTO posts (title, author, content, description, date_added, category_id) VALUES ('{$title}', '{$author}', '{$content}', '{$description}', '{$date}', '{$category_id}');";
             // Send the query!
-            mysqli_query($db, $sql);
+            if (!mysqli_query($db, $sql)){
+                array_push($errors, "An SQL error occurred: ".mysqli_error($db));
+            } else{
+                header('Location: cms.php?status=edit');
+            }
             // Close the connection
             @mysqli_close($db);
             header('Location: cms.php?status=new');
         } else if(isset($_POST['edit'])){ // If this is an edit of an old post
             $id = (int)$_POST['id'];
-            $sql = "UPDATE posts SET title = '{$title}', author = '{$author}', content = '{$content}', description = '{$description}', category = '{$category}' WHERE content_id = {$id};";
+            $sql = "UPDATE posts SET title = '{$title}', author = '{$author}', content = '{$content}', description = '{$description}', category_id = '{$category_id}' WHERE content_id = {$id};";
             // Send the query!
             if (!mysqli_query($db, $sql)){
                 array_push($errors, "An SQL error occurred: ".mysqli_error($db));

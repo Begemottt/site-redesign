@@ -71,4 +71,10 @@ form{
             width: 80%;
         }
     }
+
+    // For the form to add content
+    &.add_content{
+        max-width: 1200px;
+        background-color: $nearblack;
+    }
 }

@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
             $content_title = $row['title']; // This is all just to set the title to the title of the post from the database!!!!
             $content_description = $row['description'];
             $old_content = $row['content'];
-            $content_category = $row['category'];
+            $content_category = $row['category_id'];
             $content_lastedit = $row['date_added'];
             $content_author = $row['author'];
             $content_id = (int)$row['content_id'];
@@ -43,14 +43,16 @@ include './includes/short_header.php';?>
 <main>
 <section class="headline"><h1 id="title"><?= $content_title ?></h1></section>
 <section class="page_headline"></section>
-<article class='single'>
-    <section class="header">
+<article class='add_content'>
+    
     <?php 
         foreach($errors as $error){
+            echo '<section class="header">';
             echo '<h2>'.$error.'</h2>';
+            echo '</section>';
         }
     ?>
-    </section>
+    
     <form action="./add_content.php" method="POST" class="add_content" >
         <label>Title</label>
         <input type="text" name="title" value="<?php 
@@ -65,11 +67,28 @@ include './includes/short_header.php';?>
             }
         ?>"/>
         <label>Category</label>
-        <input type="text" name="category" value="<?php 
-            if(isset($_GET['id'])){
-                echo $content_category;
+        <select name="category">
+            <option value="NULL">
+                Select One</option>
+            <?php // Get the list of categories from the database!
+            $sql = "SELECT * FROM categories";
+            $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die;
+            $result = mysqli_query($db, $sql) or die;
+            // Next, check to see if we got a response, and if so, echo the page in the proper format.
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<option value='{$row['category_id']}}'";
+                if(isset($_GET['id'])){
+                    if($content_category == $row['category_id']){
+                        echo "selected = selected";
+                    }
+                }
+                echo ">{$row['category_name']}</option>";
             }
-        ?>"/>
+            @mysqli_free_result($result);
+            // Close the connection
+            @mysqli_close($db);        
+            ?>
+        </select>
         <label>Description</label>
         <input type="textarea" name="description" value="<?php 
             if(isset($_GET['id'])){

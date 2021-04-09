@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6{
     color: $white;
     background-color: $black;
     @include font_deco;
+    padding: 4px 0 4px 1em;
 }
 h1{
     font-size: 3em;
@@ -23,13 +24,22 @@ h1{
 }
 h2{
     font-size: 2.5em;
-    @include font_deco;
-    color: $white;
+    @include bracket_border($border_hbrackets_red);
+    margin: 8px 0 8px 0;
     &.article_header{
         text-shadow: 4px 4px 2px $lpurple;
-        background-color: $black;
         padding: 8px;
     }
+}
+h3{
+    font-size: 2em;
+    @include bracket_border($border_hbrackets_main);
+    margin: 8px 0 8px 0;
+}
+h4{
+    font-size: 1.5em;
+    @include bracket_border($border_hbrackets_purple);
+    margin: 8px 0 8px 0;
 }
 p{
     font-size: 1.25em;
@@ -53,6 +63,33 @@ pre{
         background-color: $red;
         color: $white;
     }
+}
+code{
+    color: $white;
+    background-color: $dblue;
+    padding: 8px;
+    @include font_code;
+    font-size: 1em;
+}
+blockquote p{
+    padding: 24px;
+    margin: 4px 0 4px 0;
+    background-color: $mdark;
+    color: $white;
+    @include font_deco;
+    font-size: 2em;
+    font-style: italic;
+    @include bracket_border($border_vbrackets);
+}
+// Horizonal rule!
+hr{
+    width: 80%;
+    height: 4px;
+    margin: 12px auto 12px auto;
+    background-color: $nearblack;
+    box-shadow: 0px 0px 10px $nearblack;
+    border: 0 none;
+    // @include bracket_border($border_hbrackets);
 }
 
 // ~~~~~~~~~~Link Styles~~~~~~~~~~

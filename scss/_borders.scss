@@ -9,7 +9,7 @@
     border: 24px solid transparent;
     border-image: $image 24 stretch;
 }
-@mixin test_border($image){
+@mixin bracket_border($image){
     border: 12px solid transparent;
     border-image: $image 12 round;
 }

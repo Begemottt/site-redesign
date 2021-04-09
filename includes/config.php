@@ -12,21 +12,21 @@ switch(THIS_PAGE){
         $page_title = "Robin VanGilder: Seattle-based Web Design and Development";
         $main_headline = "Robin VanGilder: Web Design & Development";
         $header_class = 'main';
-        $query = "SELECT * FROM posts WHERE category = 'main'";
+        $query = "SELECT * FROM posts WHERE category_id = '1'";
         $page_type = 'topic';
     break;
     case 'resume.php' :
         $page_title = "Resume";
         $main_headline = "My Current Resume";
         $header_class = 'resume';
-        $query = "SELECT * FROM posts WHERE category = 'resume'";
+        $query = "SELECT * FROM posts WHERE category_id = '2'";
         $page_type = 'topic';
     break;
     case 'portfolio.php' :
         $page_title = "Portfolio";
         $main_headline = "My Portfolio";
         $header_class = 'portfolio';
-        $query = "SELECT * FROM posts WHERE category = 'main'";
+        $query = "SELECT * FROM posts WHERE category_id = '1'";
         $page_type = 'list';
     break;
     case 'post_view.php' :
