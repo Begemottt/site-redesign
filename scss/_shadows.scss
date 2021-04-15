@@ -23,9 +23,3 @@
         transition: box-shadow 200ms;
     }
 }
-
-@mixin text_shadow{
-    text-shadow: 2px 2px 2px $white_shadow;
-}
-
-

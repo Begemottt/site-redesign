@@ -71,8 +71,8 @@ switch(THIS_PAGE){
 // A function to take the sql query and use it to build a page, fully displaying all content that is taken in
 function Make_Page($sql, $type){
     // First, make a connection and store the results in $result
-    $i_conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die;
-    $result = mysqli_query($i_conn, $sql) or die;
+    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die;
+    $result = mysqli_query($db, $sql) or die;
 
     // Next, check to see if we got a response, and if so, echo the page in the proper format.
     if (mysqli_num_rows($result) > 0){ // Show the records
@@ -84,9 +84,11 @@ function Make_Page($sql, $type){
                         <h2 class="article_header"><?= $row['title'] ?></h2>
                         <p class="byline"><?= $row['author'] ?> - Posted <?= $row['date_added'] ?></p>
                     </section>
+                    <div class="body_wrapper">
                     <section class="body">
                         <?= $row['content'] ?>
                     </section>
+                    </div>
                 </article>
                 <?php
             } else if ($type === 'list'){ // Show a list with just title, author, and date
@@ -106,6 +108,7 @@ function Make_Page($sql, $type){
                 <?php
             } else if($type === 'article'){
                 $post_title = $row['title'];
+                $page_title = $row['title'];
                 if(isset($_GET['id'])){
                     $post_id = (int)$_GET['id'];
                 } else {
@@ -115,16 +118,18 @@ function Make_Page($sql, $type){
                 ?>
                 </header>
                 <main>
-                <section class="headline"><h1 id="title"><?= $post_title ?></h1></section>
-                <section class="page_headline"></section>
+                <section id="header_image"><img src="./images/header_keyboard.png" class="header" /></section>
+                <section id="header_text"><h1><?= $post_title ?></h1></section>
 
                 <article class="single">
                     <section class="header">
                         <p class="byline"><?= $row['author'] ?> - Posted <?= $row['date_added'] ?></p>
                     </section>
+                    <div class="body_wrapper">
                     <section class="body">
                         <?= $row['content'] ?>
                     </section>
+                    </div>
                 </article>
                 <?php
             } else if ($type === 'backend'){
@@ -154,7 +159,7 @@ function Make_Page($sql, $type){
     // Free the results
     @mysqli_free_result($result);
     // Close the connection
-    @mysqli_close($i_conn);
+    @mysqli_close($db);
 }
 
 

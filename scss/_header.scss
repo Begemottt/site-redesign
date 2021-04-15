@@ -11,8 +11,8 @@ header{
         &#horizontalnav{
             @include size(lg){
                 flex-direction: row;
-                width: 90%;
-                position: relative;
+                width: 100%;
+                position: absolute;
                 margin: 0 auto 4px auto;
                 a{
                     img{
@@ -27,7 +27,7 @@ header{
         // Admin nav bar, sits directly below the horizontal nav at the top of the screen
         &#adminnav{
             flex-direction: row;
-            width: 90%;
+            width: 100%;
             position: absolute;
             top: 65px; 
             a{
@@ -137,44 +137,49 @@ header{
 }
 
 // ~~~~~~~~~~ Title & Header Image ~~~~~~~~~~
-section.page_headline{
+section#header_image{
     @include size(lg){
-        @include image_border($transparent_border);
-        height: 45vw;
-        width: 90vw;
-        margin: 0 auto 1em auto;
+        width: 100%;
+        height: 50vw;
     }
     @include size(sm){
         width: 100%;
         height: 50vh;
-        margin: 0;
     }
-    // Background Image
-    background-image: url('../images/header_gravy.png');
-    background-position: center;
-    background-size: cover;
+    position: absolute;
+    top: 0;
+    z-index: -10;
+    border-bottom: 4px solid $black;
+    box-shadow: 0px 0px 40px $black;
+    background-color: $black;
+    img.header{
+        object-fit: cover;
+        @include size(lg){
+            width: 100%;
+            height: 100%;
+        }
+        @include size(sm){
+            height: 100%;
+        }
+    }
 }
-// Page title
-section.headline{
-    @include background_animation($red_tile, 10s);
-    @include standard_shadow;
-    @include standard_border($red);
+section#header_text{
+    background-color: $black;
     text-align: center;
+    padding: 0.25em;
+    @include bracket_border($border_vbrackets_white);
     @include size(lg){
-        width: 90%;
-        margin: 0 auto 1em auto;
+        margin-top: 50vh;
     }
     @include size(sm){
-        width: 100%;
-        margin: 65px auto 0 auto;
+        margin-top: 50vh;
     }
-    h1#title{
-        font-size: 2.5em;
+    h1{
         color: $white;
-        text-shadow: 4px 4px 0px $lpurple;
-        background-color: $nearblack;
-        @include standard_border($red);
-        padding: 4px;
-        margin: 12px;
+        text-shadow: 4px 4px 1px $lpurple;
+        padding: 0;
+        // transform: scaleY(2);
+        margin: 0 auto 0 auto;
+        background-color: transparent;
     }
 }

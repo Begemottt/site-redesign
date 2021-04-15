@@ -41,8 +41,8 @@ if(isset($_GET['id'])){
 include './includes/short_header.php';?>
 </header>
 <main>
-<section class="headline"><h1 id="title"><?= $content_title ?></h1></section>
-<section class="page_headline"></section>
+<section id="header_image"><img src="./images/header_keyboard.png" class="header" /></section>
+<section id="header_text"><h1><?= $content_title ?></h1></section>
 <article class='add_content'>
     
     <?php 
