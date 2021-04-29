@@ -8,8 +8,7 @@ if(isset($_GET['id'])){
     $sql = "SELECT * FROM posts WHERE content_id = {$post_id}";
 
     // First, make a connection and store the results in $result
-    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die;
-    $result = mysqli_query($db, $sql) or die;
+    $result = db_connect($sql);
     // Next, check to see if we got a response, and if so, echo the page in the proper format.
     if (mysqli_num_rows($result) > 0){ // Assign the records
         while($row = mysqli_fetch_assoc($result)){ // For each row in the results, do these things
@@ -19,21 +18,20 @@ if(isset($_GET['id'])){
             $content_category = $row['category_id'];
             $content_lastedit = $row['date_added'];
             $content_author = $row['author'];
+            $header_image = $row['header_image'];
             $content_id = (int)$row['content_id'];
             $form_type = "edit";
         }
     }
     // Free the results
     @mysqli_free_result($result);
-    // Close the connection
-    @mysqli_close($db);
 } else {
     $content_title = "New Content";
     $content_description = '';
     $old_content = '';
     $content_category = '';
     $content_lastedit = '';
-    $content_lastedit = '';
+    $header_image = 'header_keyboard.png';
     $content_author = '';
     $form_type = "new";
 }
@@ -41,7 +39,7 @@ if(isset($_GET['id'])){
 include './includes/short_header.php';?>
 </header>
 <main>
-<section id="header_image"><img src="./images/header_keyboard.png" class="header" /></section>
+<section id="header_image"><img src="./images/<?= $header_image ?>" class="header" /></section>
 <section id="header_text"><h1><?= $content_title ?></h1></section>
 <article class='add_content'>
     
@@ -66,14 +64,15 @@ include './includes/short_header.php';?>
                 echo $content_author;
             }
         ?>"/>
+        <label>Header Image (exact file name!)</label>
+        <input type="text" name="header_image" value="<?= $header_image ?>"/>
         <label>Category</label>
         <select name="category">
             <option value="NULL">
                 Select One</option>
             <?php // Get the list of categories from the database!
             $sql = "SELECT * FROM categories";
-            $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die;
-            $result = mysqli_query($db, $sql) or die;
+            $result = db_connect($sql);
             // Next, check to see if we got a response, and if so, echo the page in the proper format.
             while($row = mysqli_fetch_assoc($result)){
                 echo "<option value='{$row['category_id']}}'";
@@ -85,8 +84,6 @@ include './includes/short_header.php';?>
                 echo ">{$row['category_name']}</option>";
             }
             @mysqli_free_result($result);
-            // Close the connection
-            @mysqli_close($db);        
             ?>
         </select>
         <label>Description</label>

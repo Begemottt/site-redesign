@@ -18,27 +18,29 @@
 <body>
     <header>
         <nav id="horizontalnav">
-            <a href="index.php"><img src='images/arrow_icon.png' /><p>Home</p></a>
-            <a href="resume.php"><img src='images/arrow_icon.png' /><p>Resume</p></a>
-            <a href="portfolio.php"><img src='images/arrow_icon.png' /><p>Portfolio</p></a>
-            <a href="experiments.php"><img src='images/arrow_icon.png' /><p>Experiments</p></a>
-            <a href="contact.php"><img src='images/arrow_icon.png' /><p>Contact</p></a>
+            <a href="index"><p>Home</p></a>
+            <a href="about"><p>About</p></a>
+            <a href="resume"><p>Resume</p></a>
+            <a href="portfolio"><p>Portfolio</p></a>
+            <a href="contact"><p>Contact</p></a>
         </nav>
         <?php if ( isset($_SESSION['success']) && $_SESSION['success'] === 'success' ){ ?>
         <nav id="adminnav">
             <a><p>Welcome, <?= $_SESSION['user_name'] ?></p></a>
-            <a href="cms.php"><p>CMS</p></a>
-            <a href="add_content.php"><p>Add Content</p></a>
+            <a href="cms"><p>CMS</p></a>
+            <a href="add_content"><p>Add Content</p></a>
             <a href="index.php?logout=1"><p>Log Out</p></a>
         </nav>
         <?php } ?>
+        <nav id="singlenav">
+            <a id="navbutton"><span class="arrow">➤</span><p>Menu</p></a>
+        </nav>
         <nav id="verticalnav">
-            <a href="index.php"><img src='images/arrow_icon.png' /><p>Home</p></a>
-            <a href="resume.php"><img src='images/arrow_icon.png' /><p>Resume</p></a>
-            <a href="portfolio.php"><img src='images/arrow_icon.png' /><p>Portfolio</p></a>
-            <a href="experiments.php"><img src='images/arrow_icon.png' /><p>Experiments</p></a>
-            <a href="contact.php"><img src='images/arrow_icon.png' /><p>Contact</p></a>
-            <a id="navbutton"><img src='images/arrow_icon.png' /><p>Menu</p></a>
+            <a href="index" class="submenu1"><span class="arrow">➤</span><p>Home</p></a>
+            <a href="about"  class="submenu1"><span class="arrow">➤</span><p>About</p></a>
+            <a href="resume"  class="submenu1"><span class="arrow">➤</span><p>Resume</p></a>
+            <a href="portfolio"  class="submenu1"><span class="arrow">➤</span><p>Portfolio</p></a>
+            <a href="contact"  class="submenu1"><span class="arrow">➤</span><p>Contact</p></a>
         </nav>
         <nav id="bottomnav">
             <a id="topbutton"><p>Back to Top</p></a>
